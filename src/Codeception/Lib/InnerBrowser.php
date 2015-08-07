@@ -1177,7 +1177,7 @@ class InnerBrowser extends Module implements Web, PageSourceSaver, ElementLocato
     protected function assertPageContains($needle, $message = '')
     {
         $constraint = new PageConstraint($needle, $this->_getCurrentUri());
-        $this->assertThat($this->getRunningClient()->getInternalResponse()->getContent(), $constraint, $message);
+        $this->assertThat(html_entity_decode($this->getRunningClient()->getInternalResponse()->getContent()), $constraint, $message);
     }
 
     protected function assertPageNotContains($needle, $message = '')
